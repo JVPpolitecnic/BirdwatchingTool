@@ -38,7 +38,7 @@
       Afegeix nou usuari
     </div>
     <div class="card-body">
-        <form action="./birdwatcherController.php" method="POST">
+        <form action="birdwatcherController.php" method="POST">
             <div class="form-group">
               <label for="nom">Nom</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
@@ -60,7 +60,7 @@
               <label for="exampleInputPassword1">Contrasenya</label>
               <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-outline-success mt-4" name="send">Afegeix</button>
+            <button type="submit" class="btn btn-outline-success mt-4" name="insert">Afegeix</button>
           </form>
     </div>
   </div>
