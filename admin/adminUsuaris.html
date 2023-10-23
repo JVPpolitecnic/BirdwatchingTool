@@ -38,34 +38,29 @@
       Afegeix nou usuari
     </div>
     <div class="card-body">
-        <form>
+        <form action="./birdwatcherController.php" method="POST">
             <div class="form-group">
               <label for="nom">Nom</label>
-              <input type="text" class="form-control" id="nom" aria-describedby="name" placeholder="Nom">
+              <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
             </div>
             <div class="form-group">
                 <label for="cognom1">1er Cognom</label>
-                <input type="text" class="form-control" id="cognom1" aria-describedby="name" placeholder="2n Cognom">
+                <input type="text" class="form-control" name="cognom1" aria-describedby="name" placeholder="2n Cognom">
               </div>
               <div class="form-group">
                 <label for="cognom2">2n Cognom</label>
-                <input type="text" class="form-control" id="cognom2" aria-describedby="name" placeholder="1er Cognom">
+                <input type="text" class="form-control" name="cognom2" aria-describedby="name" placeholder="1er Cognom">
               </div>
-              <div class="form-group">
-                <label for="cognom2">Data neixament:</label>
-                <input type="date" class="form-control" id="cognom2" aria-describedby="name" placeholder="1er Cognom">
-              </div>
-
               <div class="form-group">
                 <label for="exampleInputEmail1">Nom d'usuari</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correu electronic">
+                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Correu electronic">
                 <small id="emailHelp" class="form-text text-muted">Aquest correu servira per identificar-vos juntament amb la vostra contrasenya</small>
               </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Contrasenya</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-outline-success mt-4">Afegeix</button>
+            <button type="submit" class="btn btn-outline-success mt-4" name="send">Afegeix</button>
           </form>
     </div>
   </div>
