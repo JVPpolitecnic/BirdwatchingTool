@@ -31,28 +31,35 @@
         </div>
       </nav>
       <div class="card-body">
-        <form action="birdwatcherController.php" method="POST">
+        <form action="" method="POST">
             <div class="form-group">
-              <label for="nom">Nom</label>
+              <label for="nom">Nom llatí</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
             </div>
             <div class="form-group">
-                <label for="cognom1">1er Cognom</label>
+                <label for="cognom1">Nom comú</label>
                 <input type="text" class="form-control" name="cognom1" aria-describedby="name" placeholder="2n Cognom">
               </div>
               <div class="form-group">
-                <label for="cognom2">2n Cognom</label>
-                <input type="text" class="form-control" name="cognom2" aria-describedby="name" placeholder="1er Cognom">
+                <label for="cognom2">Id Ordre</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                <?php 
+                require 'bd.php';
+                $optionList = selectIdOrdre();
+                
+                 foreach($optionList as $row){
+                    echo "<option value='".$row["id_ordre_cientific"] . "'>".$row['nom_ordre_cientific']."</option>";
+                  }
+                  ?>  
+                 
+                </select>
               </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Nom d'usuari</label>
-                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Correu electronic">
-                <small id="emailHelp" class="form-text text-muted">Aquest correu servira per identificar-vos juntament amb la vostra contrasenya</small>
-              </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Contrasenya</label>
-              <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
+           
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Imatge Ocell</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+            
             <button type="submit" class="btn btn-outline-success mt-4" name="insert">Afegeix</button>
           </form>
     </div>

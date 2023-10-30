@@ -56,7 +56,7 @@
                 <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Correu electronic">
                 <small id="emailHelp" class="form-text text-muted">Aquest correu servira per identificar-vos juntament amb la vostra contrasenya</small>
               </div>
-            <div class="form-group">
+            <div class="form-group">  
               <label for="exampleInputPassword1">Contrasenya</label>
               <input type="password" class="form-control" name="password" placeholder="Password">
             </div>

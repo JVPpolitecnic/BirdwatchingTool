@@ -45,4 +45,17 @@ function insertBird($nom_llati, $nom_comu, $cognom2, $id_ordre, $img){
   $sentencia->execute();
   $conexion = closeBD();
   }
+
+  function selectIdOrdre(){
+    $conexion = openBD();
+    $sentenciaTxt = "select * from ordre_cientific"; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+echo "entrado";
+
+    $conexion = closeBD();
+    return $resultado;
+
+  }
 ?>
