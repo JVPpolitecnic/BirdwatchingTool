@@ -31,18 +31,18 @@
         </div>
       </nav>
       <div class="card-body">
-        <form action="" method="POST">
+        <form action="birdController.php" method="POST">
             <div class="form-group">
               <label for="nom">Nom llatí</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
             </div>
             <div class="form-group">
                 <label for="cognom1">Nom comú</label>
-                <input type="text" class="form-control" name="cognom1" aria-describedby="name" placeholder="2n Cognom">
+                <input type="text" class="form-control" name="nomComu" aria-describedby="name" placeholder="2n Cognom">
               </div>
               <div class="form-group">
                 <label for="cognom2">Id Ordre</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="idOrdre">
                 <?php 
                 require 'bd.php';
                 $optionList = selectIdOrdre();
@@ -57,7 +57,7 @@
            
                 <div class="form-group">
                   <label for="exampleFormControlFile1">Imatge Ocell</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                  <input type="file" class="form-control-file" id="img">
                 </div>
             
             <button type="submit" class="btn btn-outline-success mt-4" name="insert">Afegeix</button>

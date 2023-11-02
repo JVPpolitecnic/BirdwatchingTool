@@ -1,4 +1,5 @@
 <?php
+    require_once('./bd.php');
     if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
@@ -10,7 +11,7 @@
         }
         
         if (isset($_POST['insert'])) { 
-            insertBirdWatcher($_POST['nom'], $_POST['cognom1'], $_POST['cognom2'], $_POST['email'], $_POST['password']); 
+            insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOrdre'], $_POST['imgOcell']); 
             header('Location: ./index.php');
             exit();
         }
