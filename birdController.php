@@ -1,5 +1,5 @@
 <?php
-    require_once('bd.php');
+    require_once('./bd.php');
     if(isset($_POST['submit'])) {
       
         $file = $_FILES['birdImg'];
@@ -29,6 +29,8 @@
           } else {
               echo "File upload failed with error code: " . $fileError;
           }
+
+          insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOr'], $destinationPath); 
         exit();
 
       }

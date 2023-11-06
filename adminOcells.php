@@ -42,7 +42,7 @@
               </div>
               <div class="form-group">
                 <label for="cognom2">Id Ordre</label>
-                <select class="form-control" id="idOrdre">
+                <select class="form-control" id="idOrdre" name="idOr">
                 <?php 
                 require 'bd.php';
                 $optionList = selectIdOrdre();

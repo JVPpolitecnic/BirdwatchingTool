@@ -38,7 +38,7 @@ $conexion = closeBD();
 function insertBird($nom_llati, $nom_comu, $id_ordre, $img){
   $conexion = openBD();
 
-  $sentenciaTxt = "insert into ocells (nom, nomComu, idOrdre, img,) values (:nom, :nomComu, :idOrdre, :img)";
+  $sentenciaTxt = "insert into ocells (nom_llati, nom_comu, id_ordre_cientific, img_ocell) values (:nom, :nomComu, :idOrdre, :img)";
 $sentencia = $conexion->prepare($sentenciaTxt);
 $sentencia->bindParam(':nom', $nom_llati);
 $sentencia->bindParam(':nomComu', $nom_comu);
