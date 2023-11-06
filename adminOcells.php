@@ -31,7 +31,7 @@
         </div>
       </nav>
       <div class="card-body">
-        <form action="birdController.php" method="POST">
+        <form action="birdController.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="nom">Nom llatí</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
@@ -57,10 +57,10 @@
            
                 <div class="form-group">
                   <label for="exampleFormControlFile1">Imatge Ocell</label>
-                  <input type="file" class="form-control-file" id="img">
+                  <input type="file" class="form-control-file" id="img" name="birdImg">
                 </div>
             
-            <button type="submit" class="btn btn-outline-success mt-4" name="insert">Afegeix</button>
+            <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
           </form>
     </div>
 </body>

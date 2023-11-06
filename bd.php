@@ -56,7 +56,7 @@ $sentencia->bindParam(':img', $img);
     $sentencia = $conexion->prepare($sentenciaTxt);
     $sentencia -> execute();
     $resultado = $sentencia->fetchAll();
-echo "entrado";
+    echo "entrado";
 
     $conexion = closeBD();
     return $resultado;
