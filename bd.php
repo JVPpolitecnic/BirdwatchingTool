@@ -62,4 +62,14 @@ $sentencia->bindParam(':img', $img);
     return $resultado;
 
   }
+
+  function selectBirds(){
+    $conexion = openBD();
+    $sentenciaTxt = "select * from birdwatchingtool.ocells"; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
 ?>

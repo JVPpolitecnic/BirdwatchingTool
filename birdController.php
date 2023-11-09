@@ -19,6 +19,7 @@
           // Check if the file was uploaded without errors
           if ($fileError === 0) {
               $destinationPath = $targetDirectory . $fileName;
+              $destinationPathDB = "/aplicacioOcells/resources/ocellsImg/". $fileName;
               
               // Move the uploaded file to the destination folder
               if (move_uploaded_file($fileTmpName, $destinationPath)) {
@@ -30,7 +31,7 @@
               echo "File upload failed with error code: " . $fileError;
           }
 
-          insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOr'], $destinationPath); 
+          insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOr'], $destinationPathDB); 
         exit();
 
       }
