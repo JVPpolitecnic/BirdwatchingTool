@@ -72,4 +72,45 @@ $sentencia->bindParam(':img', $img);
     $conexion = closeBD();
     return $resultado;
   }
+
+  function deleteBirds($id){
+    $conexion = openBD();
+    $sentenciaTxt = "delete from birdwatchingtool.ocells where id_ocell =". $id; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
+
+  function searchBirds($search){
+    $conexion = openBD();
+    $sentenciaTxt = "select * from birdwatchingtool.ocells where nom_ocell =%". $search."% OR nom_llati=%".$search."%"; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
+
+  function getUserEmails(){
+    $conexion = openBD();
+    $sentenciaTxt = "select correu_electronic from birdwatchingtool.birdwatcher";
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
+
+  function getUserPasswords(){
+    $conexion = openBD();
+    $sentenciaTxt = "select contrasenya from birdwatchingtool.birdwatcher";
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
+  
 ?>

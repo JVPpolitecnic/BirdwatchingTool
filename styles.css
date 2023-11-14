@@ -1,0 +1,57 @@
+.body-special {
+  margin: 0;
+  padding: 0;
+  background-image: url('./img/flock_birds.gif');
+  background-size: cover; /* Cover the entire screen */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  display: flex;
+  align-items: center; /* Optional: Center content vertically */
+  justify-content: center; /* Optional: Center content horizontally */
+}
+.special{
+    width: 24rem;
+    height: 36rem;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    color: color-primary-white;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);}
+    .special-p {
+        inset: auto auto 80px 30px;
+      }
+      .special-p, .special-a {
+        position: absolute;
+        opacity: 0;
+        max-width: 80%;
+        transition: opacity .3s ease-out;
+      }
+   
+      .special-h2 {
+        inset: auto auto 30px 30px;
+        margin: 0;
+        transition: inset .3s .3s ease-out;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+
+      :hover .special-h2 {
+        inset: auto auto 220px 30px;
+        transition: inset .3s ease-out;
+      }
+      
+      :hover .special-p, &:hover .special-a {
+        opacity: 1;
+        transition: opacity .5s .1s ease-in;
+      }
+      
+      :hover .special-img {
+        transition: opacity .3s ease-in;
+        opacity: 1;
+      }
+      .material-symbols-outlined {
+        vertical-align: middle;
+      }
+      

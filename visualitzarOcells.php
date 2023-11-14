@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -30,23 +31,30 @@
           </div>
         </div>
       </nav>
-      
+       
+
+      <div class="container">
+        <div class="row mt-4">
     <?php 
 
     require 'bd.php';
 
     $birds = selectBirds();
       foreach($birds as $row){
-        echo "<div class='card' style=''>".
-        "<h5 class='card-title'>" . $row['nom_comu'] ."</h5>".
-        "<h6 class='card-subtitle mb-2 text-muted'>". $row['nom_llati'] ."</h6>".
-        "<img src='". $row['img_ocell'] ."' alt='OCELL IMG'>".
-        "</div>";
+   
+     echo 
+     "<div class='col-md-4'>".
+        "<div class='card special my-4' style='width: 18rem;'>".
         
-      }
-    
-    ?>
-
-
-</body>
-</html>
+        "<div class='card-body'>".
+        "<img src='". $row['img_ocell'] ."' class='card-img-top special-img' alt='".$row['nom_comu']."'>".
+          "<h2 class='special-h2'>". $row['nom_comu'] ."</h2>
+          <p class='special-p'>".$row['nom_llati']."</p>".
+          "<a href='deleteBirdController.php?id=".$row['id_ocell']."' class='btn btn-outline-danger'>elimina</a>".
+          "<a href'#'=".$row['id_ocell']."' class='btn btn-outline-success'>edita</a>".
+        "</div>".
+        "</div>".
+      "</div>";}
+        ?>
+        </div>
+        </div>

@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost/aplicacioOcells/visualitzarOcells.php",
+            "url": "http://localhost/aplicacioOcells/index.php",
             "webRoot": "${workspaceFolder}"
         },
         {
