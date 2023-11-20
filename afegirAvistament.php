@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Afagir Ocell</a>
+          <a class="navbar-brand" href="#">Afagir Avistament</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,34 +31,49 @@
         </div>
       </nav>
       <div class="card-body">
-        <form action="controllers_php/birdController.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="nom">Nom llatí</label>
-              <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">
-            </div>
-            <div class="form-group">
-                <label for="cognom1">Nom comú</label>
-                <input type="text" class="form-control" name="nomComu" aria-describedby="name" placeholder="2n Cognom">
-              </div>
+        <form action="controllers_php/addSightingController.php" method="POST" enctype="multipart/form-data">
+          
               <div class="form-group">
-                <label for="cognom2">Id Ordre</label>
-                <select class="form-control" id="idOrdre" name="idOr">
+                <label for="cognom2">Ocell Avistat</label>
+                <select class="form-control" name="ocell">
                 <?php 
                 require 'bd.php';
-                $optionList = selectIdOrdre();
+                $optionList = selectBirds();
                 
                  foreach($optionList as $row){
-                    echo "<option value='".$row["id_ordre_cientific"] . "'>".$row['nom_ordre_cientific']."</option>";
+                    echo "<option value='".$row["id_ocell"] . "'>".$row['nom_comu']."</option>";
                   }
                   ?>  
                  
                 </select>
               </div>
+
+              
+              <div class="form-group">
+                <label for="cognom2">Data</label>
+                <input type="date" id="data" name="data" required>
+              </div>
+
+              <div class="form-group">
+                <label for="cognom2">Hora</label>
+                <input type="time" id="hora" name="hora" required>
+              </div>
+
+              <div class="form-group">
+                <label for="cognom2">Zona d'avistament</label>
+                <select class="form-control" name="zona">
+                <?php 
+                $optionList2 = selectZones();
+                
+                 foreach($optionList2 as $row){
+                    echo "<option value='".$row["id_lloc"] . "'>".$row['zona']."</option>";
+                  }
+                  ?>  
+                </select>
+              </div>
            
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Imatge Ocell</label>
-                  <input type="file" class="form-control-file" id="img" name="birdImg">
-                </div>
+           
+              
             
             <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
           </form>

@@ -1,5 +1,5 @@
 <?php
-    require_once('./bd.php');
+    require_once('../bd.php');
     if(isset($_POST['submit'])) {
       
         $file = $_FILES['birdImg'];

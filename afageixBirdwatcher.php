@@ -38,7 +38,7 @@
       Afegeix nou usuari
     </div>
     <div class="card-body">
-        <form action="birdwatcherController.php" method="POST">
+        <form action="controllers_php/birdwatcherController.php" method="POST">
             <div class="form-group">
               <label for="nom">Nom</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" placeholder="Nom">

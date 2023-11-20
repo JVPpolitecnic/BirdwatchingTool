@@ -50,6 +50,21 @@ $sentencia->bindParam(':img', $img);
 }
 
 
+function insertAvistament($id_birdwatcher, $id_ocell, $data, $hora, $zona){
+  $conexion = openBD();
+
+  $sentenciaTxt = "insert into ocells (id_birdwatcher_fk, id_ocell_fk, data, hora) values (:id_birdwatcher, :id_ocell, :data, :zona)";
+$sentencia = $conexion->prepare($sentenciaTxt);
+$sentencia->bindParam(':id_birdwatcher', $id_birdwatcher);
+$sentencia->bindParam(':id_ocell', $id_ocell);
+$sentencia->bindParam(':data', $data);
+$sentencia->bindParam(':zona', $zona);
+  $sentencia->execute();
+  $conexion = closeBD();
+
+}
+
+
   function selectIdOrdre(){
     $conexion = openBD();
     $sentenciaTxt = "select * from ordre_cientific"; 
@@ -72,7 +87,15 @@ $sentencia->bindParam(':img', $img);
     $conexion = closeBD();
     return $resultado;
   }
-
+  function selectZones(){
+    $conexion = openBD();
+    $sentenciaTxt = "select * from birdwatchingtool.zones"; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
   function deleteBirds($id){
     $conexion = openBD();
     $sentenciaTxt = "delete from birdwatchingtool.ocells where id_ocell =". $id; 
@@ -85,22 +108,35 @@ $sentencia->bindParam(':img', $img);
 
   function searchBirds($search){
     $conexion = openBD();
-    $sentenciaTxt = "select * from birdwatchingtool.ocells where nom_ocell =%". $search."% OR nom_llati=%".$search."%"; 
+    $sentenciaTxt = "select * from birdwatchingtool.ocells where nom_ocell =%:search%OR nom_llati=%:search%"; 
     $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':search', $search);
     $sentencia -> execute();
     $resultado = $sentencia->fetchAll();
     $conexion = closeBD();
     return $resultado;
   }
 
-  function getUserEmails(){
+  function getPasswordByEmails($email){
     $conexion = openBD();
-    $sentenciaTxt = "select correu_electronic from birdwatchingtool.birdwatcher";
+    $sentenciaTxt = "select contrasenya from birdwatchingtool.birdwatcher where correu_electronic = :email";
     $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':email', $email);
     $sentencia -> execute();
-    $resultado = $sentencia->fetchAll();
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     $conexion = closeBD();
-    return $resultado;
+    return $resultado[0];
+  }
+
+  function getIDByEmails($email){
+    $conexion = openBD();
+    $sentenciaTxt = "select id_birdwatcher from birdwatchingtool.birdwatcher where correu_electronic = :email";
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':email', $email);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    $conexion = closeBD();
+    return $resultado[0];
   }
 
   function getUserPasswords(){
@@ -108,9 +144,9 @@ $sentencia->bindParam(':img', $img);
     $sentenciaTxt = "select contrasenya from birdwatchingtool.birdwatcher";
     $sentencia = $conexion->prepare($sentenciaTxt);
     $sentencia -> execute();
-    $resultado = $sentencia->fetchAll();
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     $conexion = closeBD();
-    return $resultado;
+    return $resultado[0];
   }
   
 ?>
