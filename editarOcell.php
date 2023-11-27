@@ -39,8 +39,12 @@
     <?php 
 
     require 'bd.php';
-
-    $birds = selectBirds();
+    if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+     
+     
+  }
+    $birds = selectBirdsById($id);
       foreach($birds as $row){
    
      echo 

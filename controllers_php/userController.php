@@ -13,9 +13,12 @@ $passwords = getPasswordByEmails($userName);
     if($psswd == $passwords["contrasenya"]){
         $id = getIDByEmails($userName);
         $_SESSION['user_id'] = $id["id_birdwatcher"];
-        
+       
+        if($userName == "admin@admin.com"){
+            header('Location: ../adminOcells.php');    
+        } else {
         header('Location: ../visualitzarOcells.php');
-      
+    }
     } else {
         echo "false";
     }

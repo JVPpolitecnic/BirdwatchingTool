@@ -54,4 +54,7 @@
       .material-symbols-outlined {
         vertical-align: middle;
       }
-      
+      #map{
+        height: 50%;
+        width: auto;
+      }

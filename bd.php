@@ -53,7 +53,7 @@ $sentencia->bindParam(':img', $img);
 function insertAvistament($id_birdwatcher, $id_ocell, $data, $hora, $zona){
   $conexion = openBD();
 
-  $sentenciaTxt = "insert into ocells (id_birdwatcher_fk, id_ocell_fk, data, hora) values (:id_birdwatcher, :id_ocell, :data, :zona)";
+  $sentenciaTxt = "insert into avistaments (id_birdwatcher_fk, id_ocell_fk, data, hora) values (:id_birdwatcher, :id_ocell, :data, :zona)";
 $sentencia = $conexion->prepare($sentenciaTxt);
 $sentencia->bindParam(':id_birdwatcher', $id_birdwatcher);
 $sentencia->bindParam(':id_ocell', $id_ocell);
@@ -82,6 +82,16 @@ $sentencia->bindParam(':zona', $zona);
     $conexion = openBD();
     $sentenciaTxt = "select * from birdwatchingtool.ocells"; 
     $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll();
+    $conexion = closeBD();
+    return $resultado;
+  }
+  function selectBirdsById($id){
+    $conexion = openBD();
+    $sentenciaTxt = "select * from birdwatchingtool.ocells where id_ocell = :id"; 
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':id', $id);
     $sentencia -> execute();
     $resultado = $sentencia->fetchAll();
     $conexion = closeBD();
