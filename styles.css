@@ -54,7 +54,31 @@
       .material-symbols-outlined {
         vertical-align: middle;
       }
-      #map{
-        height: 50%;
-        width: auto;
+      .btn-circle {
+        width: 60px;
+        height: 60px;
+        padding: 6px 0px;
+        border-radius: 30px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 1.42857;
+    }
+      #mapaDiv{
+        position: relative;
+      }
+      #ricarda{
+        position: absolute;
+        top: 65%;
+        left: 70%;
+      }
+      #margarola{
+        position: absolute;
+        top: 65%;
+        left: 80%;
+      }
+      #platja{
+        position: absolute;
+        top: 65%;
+        left: 90%;
       }

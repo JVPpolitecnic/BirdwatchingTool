@@ -4,15 +4,12 @@ function openBD()
 $servername = "localhost";
 $username = "root";
 $password = "";
-
-
   $conn = new PDO("mysql:host=$servername;dbname=birdwatchingtool", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conn->exec("set names utf8");
 return $conn;
 }
-
 
 function closeBD(){
     return null;
@@ -53,11 +50,12 @@ $sentencia->bindParam(':img', $img);
 function insertAvistament($id_birdwatcher, $id_ocell, $data, $hora, $zona){
   $conexion = openBD();
 
-  $sentenciaTxt = "insert into avistaments (id_birdwatcher_fk, id_ocell_fk, data, hora) values (:id_birdwatcher, :id_ocell, :data, :zona)";
+  $sentenciaTxt = "insert into avistaments (id_birdwatcher_fk, id_ocell_fk, data, hora, zona) values (:id_birdwatcher, :id_ocell, :data, :hora, :zona)";
 $sentencia = $conexion->prepare($sentenciaTxt);
 $sentencia->bindParam(':id_birdwatcher', $id_birdwatcher);
 $sentencia->bindParam(':id_ocell', $id_ocell);
 $sentencia->bindParam(':data', $data);
+$sentencia->bindParam(':hora', $hora);
 $sentencia->bindParam(':zona', $zona);
   $sentencia->execute();
   $conexion = closeBD();
@@ -153,6 +151,18 @@ $sentencia->bindParam(':zona', $zona);
     $conexion = openBD();
     $sentenciaTxt = "select contrasenya from birdwatchingtool.birdwatcher";
     $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    $conexion = closeBD();
+    return $resultado[0];
+  }
+
+  function getNumberAvistamentByUserIdAndZone($userId, $zone){
+    $conexion = openBD();
+    $sentenciaTxt = "select COUNT(id_avistament) as cantidad FROM birdwatchingtool.avistaments where id_birdwatcher_fk = :idUser AND zona = :zone";
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':idUser', $userId);
+    $sentencia->bindParam(':zone', $zone);
     $sentencia -> execute();
     $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     $conexion = closeBD();

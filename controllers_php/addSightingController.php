@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
       
        
 
-        insertAvistament((int)$_SESSION['user_id'], (int)$_POST['ocell'], $_POST['data'], $_POST['hora'], $_POST['zona']);
+        insertAvistament((int)$_SESSION['user_id'], (int)$_POST['ocell'], $_POST['data'], $_POST['hora'], (int)$_POST['zona']);
 
         header('Location: ../afegirAvistament.php');
     } 

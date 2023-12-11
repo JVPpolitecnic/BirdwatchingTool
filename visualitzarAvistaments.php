@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,15 +33,47 @@
           </div>
         </div>
       </nav>
-       
+       <?php 
+       $session_id = $_SESSION['user_id'];
+       require_once 'bd.php';
+       $ricarda = getNumberAvistamentByUserIdAndZone($session_id, 2);
+       $margarola = getNumberAvistamentByUserIdAndZone($session_id, 1);
+       $platja = getNumberAvistamentByUserIdAndZone($session_id, 3);
+       ?>
+    
+      <div id="mapaDiv" class="container">
+   
+      <button id="ricarda" class="btn btn-success btn-circle" 
+      data-bs-trigger="hover" 
+      data-bs-toggle="popover"
+      data-bs-title="LLaguna de la Ricarda"
+      data-bs-content="La Ricarda es un humedal mediterráneo costero que se sitúa en el NE de la
+Península Ibérica, muy cercano al Aeropuerto de Barcelona-El Prat Josep
+Tarradellas dentro del municipio de El Prat de Llobregat."><?php echo $ricarda['cantidad']; ?>
+      </button>
 
-      <div class="container">
+<button id="margarola" class="btn btn-success btn-circle"
+ data-bs-trigger="hover"
+  data-bs-toggle="popover"
+ data-bs-title="LLaguna de la Margarola" 
+ data-bs-content="La llaguna de la Magarola es una pequeña laguna litoral situada cerca del edificio del Semàfor en la zona del Delta del Llobregat.">
+ <?php echo $margarola['cantidad']; ?>
+</button>
+
+<button id="platja" class="btn btn-success btn-circle"
+ data-bs-trigger="hover"
+  data-bs-toggle="popover"
+ data-bs-title="Zona de la platja" 
+ data-bs-content="Zona de la platja, amb un mirador cap a aquesta">
+ <?php echo $platja['cantidad']; ?>
+</button>
+
         <div class="row mt-4">
 
         <img src="resources/mapa.jpg" id="map" alt="mapa del prat">
     <?php 
 
-    require 'bd.php';
+ 
 
     $birds = selectBirds();
       
@@ -49,3 +82,8 @@
         ?>
         </div>
         </div>
+
+        <script>
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+</script>

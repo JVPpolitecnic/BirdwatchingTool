@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Control usuaris</a>
+                <a class="nav-link active" aria-current="page" href="visualitzarAvistaments.php">Visualitzar avistaments</a>
               </li>     
               <li class="nav-item">
                 <a class="nav-link" href="#">Control ocells</a>
@@ -30,53 +30,54 @@
           </div>
         </div>
       </nav>
-      <div class="card-body">
-        <form action="controllers_php/addSightingController.php" method="POST" enctype="multipart/form-data">
-          
-              <div class="form-group">
-                <label for="cognom2">Ocell Avistat</label>
-                <select class="form-control" name="ocell">
-                <?php 
-                require 'bd.php';
-                $optionList = selectBirds();
-                
-                 foreach($optionList as $row){
-                    echo "<option value='".$row["id_ocell"] . "'>".$row['nom_comu']."</option>";
-                  }
-                  ?>  
-                 
-                </select>
-              </div>
+ 
+               <div class="card" style="width: 40%">
+                      <h5 class="card-header">Afegir avistament</h5>
+                  <div class="card-body">
+                        <form action="controllers_php/addSightingController.php" method="POST" enctype="multipart/form-data">
+                          
+                                        <div class="form-group">
+                                          <label for="cognom2">Ocell Avistat</label>
+                                          <select class="form-control" name="ocell">
+                                          <?php 
+                                          require 'bd.php';
+                                          $optionList = selectBirds();
+                                          
+                                          foreach($optionList as $row){
+                                              echo "<option value='".$row["id_ocell"] . "'>".$row['nom_comu']."</option>";
+                                            }
+                                            ?>  
+                                          
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="cognom2">Data</label>
+                                          <input type="date" id="data" name="data" required>
+                                        </div>
 
-              
-              <div class="form-group">
-                <label for="cognom2">Data</label>
-                <input type="date" id="data" name="data" required>
-              </div>
+                                        <div class="form-group">
+                                          <label for="cognom2">Hora</label>
+                                          <input type="time" id="hora" name="hora" required>
+                                        </div>
 
-              <div class="form-group">
-                <label for="cognom2">Hora</label>
-                <input type="time" id="hora" name="hora" required>
-              </div>
+                                        <div class="form-group">
+                                          <label for="cognom2">Zona d'avistament</label>
+                                          <select class="form-control" name="zona">
+                                          <?php 
+                                          $optionList2 = selectZones();
+                                          
+                                          foreach($optionList2 as $row){
+                                              echo "<option value='".(int)$row["id_lloc"] . "'>".$row['zona']."</option>";
+                                            }
+                                            ?>  
+                                          </select>
+                                        </div>
+                                      <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
 
-              <div class="form-group">
-                <label for="cognom2">Zona d'avistament</label>
-                <select class="form-control" name="zona">
-                <?php 
-                $optionList2 = selectZones();
-                
-                 foreach($optionList2 as $row){
-                    echo "<option value='".$row["id_lloc"] . "'>".$row['zona']."</option>";
-                  }
-                  ?>  
-                </select>
-              </div>
-           
-           
-              
-            
-            <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
-          </form>
-    </div>
+                      </form>
+                  </div>
+                </div>
+  
+     
 </body>
 </html>
