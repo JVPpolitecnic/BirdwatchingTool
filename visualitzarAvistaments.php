@@ -43,30 +43,30 @@
     
       <div id="mapaDiv" class="container">
    
-      <button id="ricarda" class="btn btn-success btn-circle" 
+      <a id="ricarda" class="btn btn-success btn-circle" href="llagunaRicarda.php"
       data-bs-trigger="hover" 
       data-bs-toggle="popover"
       data-bs-title="LLaguna de la Ricarda"
       data-bs-content="La Ricarda es un humedal mediterráneo costero que se sitúa en el NE de la
 Península Ibérica, muy cercano al Aeropuerto de Barcelona-El Prat Josep
 Tarradellas dentro del municipio de El Prat de Llobregat."><?php echo $ricarda['cantidad']; ?>
-      </button>
+</a>
 
-<button id="margarola" class="btn btn-success btn-circle"
+<a id="margarola" class="btn btn-success btn-circle" href="llagunaMargarola.php"
  data-bs-trigger="hover"
   data-bs-toggle="popover"
  data-bs-title="LLaguna de la Margarola" 
  data-bs-content="La llaguna de la Magarola es una pequeña laguna litoral situada cerca del edificio del Semàfor en la zona del Delta del Llobregat.">
  <?php echo $margarola['cantidad']; ?>
-</button>
+</a>
 
-<button id="platja" class="btn btn-success btn-circle"
+<a id="platja" class="btn btn-success btn-circle" href="zonaPlatja.php"
  data-bs-trigger="hover"
   data-bs-toggle="popover"
  data-bs-title="Zona de la platja" 
  data-bs-content="Zona de la platja, amb un mirador cap a aquesta">
  <?php echo $platja['cantidad']; ?>
-</button>
+</a>
 
         <div class="row mt-4">
 

@@ -20,19 +20,24 @@
                 <a class="nav-link active" aria-current="page" href="visualitzarAvistaments.php">Visualitzar avistaments</a>
               </li>     
               <li class="nav-item">
-                <a class="nav-link" href="#">Control ocells</a>
+                <a class="nav-link" href="visualitzarOcells.php">Visualitar especies d'ocells</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
+              <a href="index.php" class="btn btn-outline-success">Sortir</a>
             </form>
           </div>
         </div>
       </nav>
  
-               <div class="card" style="width: 40%">
-                      <h5 class="card-header">Afegir avistament</h5>
+      <div class="row-sm-6">
+
+<div class="card col-sm-6 mx-auto">
+  <div class="card-header text-bg-success">
+    Afegeix avistament
+  </div>
                   <div class="card-body">
                         <form action="controllers_php/addSightingController.php" method="POST" enctype="multipart/form-data">
                           
@@ -75,6 +80,7 @@
                                       <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
 
                       </form>
+                                          </div>
                   </div>
                 </div>
   

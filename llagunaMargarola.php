@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Visualitzar Ocell</a>
+          <a class="navbar-brand" href="#">Avistaments LLaguna Margarola</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,23 +40,26 @@
     <?php 
 
     require 'bd.php';
-
-    $birds = selectBirds();
-      foreach($birds as $row){
-     echo 
-     "<div class='col-md-4'>".
+    $session_id = $_SESSION['user_id'];
+    $avistaments = getAvistamentsByUserIdAndZone($session_id, 1);
+    foreach($avistaments as $avistament){
+        $birds = selectBirdsById($avistament['id_ocell_fk']);
+        echo 
+        "<div class='col-md-4'>".
         "<div class='card special my-4' style='width: 18rem;'>".
         
         "<div class='card-body'>".
-        "<img src='". $row['img_ocell'] ."' class='card-img-top special-img' alt='".$row['nom_comu']."'>".
-          "<h2 class='special-h2'>". $row['nom_comu'] ."</h2>
-          <p class='special-p'>".$row['nom_llati']."</p>".
-          "<a href='controllers_php/deleteBirdController.php?id=".$row['id_ocell']."' class='btn btn-outline-danger'>elimina</a>".
-          "<a href='editarOcell.php?id=".$row['id_ocell']."' class='btn btn-outline-success'>edita</a>".
+        "<img src='". $birds[0]['img_ocell'] ."' class='card-img-top special-img' alt='".$birds[0]['nom_comu']."'>".
+            "<h2 class='special-h2'>". $birds[0]['nom_comu'] ."</h2>".
+            "<h1 class='special-h1'>"."hora:". $avistament['hora'] ."</h1>
+            <h1 class='special-h1'>"."data:". $avistament['data'] ."</h1>
+            <p class='special-p'>".$birds[0]['nom_llati']."</p>".
         "</div>".
         "</div>".
-      "</div>";
+        "</div>";
     }
+
+   
         ?>
         </div>
         </div>

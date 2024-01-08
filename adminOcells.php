@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Control usuaris</a>
+                <a class="nav-link active" aria-current="page" href="afageixBirdwatcher.php">Control usuaris</a>
               </li>     
               <li class="nav-item">
                 <a class="nav-link" href="#">Control ocells</a>
@@ -32,6 +32,10 @@
           </div>
         </div>
       </nav>
+      <div class="card col-sm-6 mx-auto">
+    <div class="card-header text-bg-success">
+      Afegeix nou usuari
+    </div>
       <div class="card-body">
         <form action="controllers_php/birdController.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -65,5 +69,6 @@
             <button type="submit" class="btn btn-outline-success mt-4" name="submit">Afegeix</button>
           </form>
     </div>
+                </div>
 </body>
 </html>

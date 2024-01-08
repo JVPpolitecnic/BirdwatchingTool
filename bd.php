@@ -168,5 +168,17 @@ $sentencia->bindParam(':zona', $zona);
     $conexion = closeBD();
     return $resultado[0];
   }
+
+  function getAvistamentsByUserIdAndZone($userId, $zone){
+    $conexion = openBD();
+    $sentenciaTxt = "select * FROM birdwatchingtool.avistaments where id_birdwatcher_fk = :idUser AND zona = :zone";
+    $sentencia = $conexion->prepare($sentenciaTxt);
+    $sentencia->bindParam(':idUser', $userId);
+    $sentencia->bindParam(':zone', $zone);
+    $sentencia -> execute();
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    $conexion = closeBD();
+    return $resultado;
+  }
   
 ?>
