@@ -34,7 +34,7 @@
       </nav>
       <div class="card col-sm-6 mx-auto">
     <div class="card-header text-bg-success">
-      Afegeix nou usuari
+      Afegeix nou ocell
     </div>
       <div class="card-body">
         <form action="controllers_php/birdController.php" method="POST" enctype="multipart/form-data">

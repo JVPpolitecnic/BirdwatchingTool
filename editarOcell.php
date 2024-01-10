@@ -32,34 +32,56 @@
           </div>
         </div>
       </nav>
-       
 
-      <div class="container">
-        <div class="row mt-4">
-    <?php 
+      <?php
+require_once('bd.php');
 
-    require 'bd.php';
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
-     
-     
-  }
-    $birds = selectBirdsById($id);
-      foreach($birds as $row){
-   
-     echo 
-     "<div class='col-md-4'>".
-        "<div class='card special my-4' style='width: 18rem;'>".
-        
-        "<div class='card-body'>".
-        "<img src='". $row['img_ocell'] ."' class='card-img-top special-img' alt='".$row['nom_comu']."'>".
-          "<h2 class='special-h2'>". $row['nom_comu'] ."</h2>
-          <p class='special-p'>".$row['nom_llati']."</p>".
-          "<a href='controllers_php/deleteBirdController.php?id=".$row['id_ocell']."' class='btn btn-outline-danger'>elimina</a>".
-          "<a href='editarOcell.php?id=".$row['id_ocell']."' class='btn btn-outline-success'>edita</a>".
-        "</div>".
-        "</div>".
-      "</div>";}
-        ?>
-        </div>
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    
+}
+
+$birds = selectBirdsById($id);
+
+?>
+
+<div class="card col-sm-6 mx-auto">
+    <div class="card-header text-bg-success">
+      Editar ocell
+    </div>
+      <div class="card-body">
+        <form action="controllers_php/birdController.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="nom">Nom llatí</label>
+              <input type="text" class="form-control" name="nom" aria-describedby="name" value=<?php echo '"'. $birds[0]['nom_llati'] . '"' ?>>
+            </div>
+            <div class="form-group">
+                <label for="cognom1">Nom comú</label>
+                <input type="text" class="form-control" name="nomComu" aria-describedby="name" value=<?php echo '"'. $birds[0]['nom_comu'] . '"' ?>>
+              </div>
+              <div class="form-group">
+                <label for="cognom2">Id Ordre</label>
+                <select class="form-control" id="idOrdre" name="idOr">
+                <?php 
+                
+                $optionList = selectIdOrdre();
+                
+                 foreach($optionList as $row){
+                    echo "<option value='".$row["id_ordre_cientific"] . "'>".$row['nom_ordre_cientific']."</option>";
+                  }
+                  ?>  
+                 
+                </select>
+              </div>
+           
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Imatge Ocell</label>
+                  <input type="file" class="form-control-file" id="img" name="birdImg">
+                </div>
+            
+            <a class="btn btn-outline-success mt-4" href="" name="submit">Edita</a>
+          </form>
+    </div>
+                </div>
         </div>
