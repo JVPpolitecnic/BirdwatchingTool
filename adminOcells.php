@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="afageixBirdwatcher.php">Control usuaris</a>
               </li>     
               <li class="nav-item">
-                <a class="nav-link" href="#">Control ocells</a>
+                <a class="nav-link" href="visualitzarOcells.php">Visualitzar Ocells</a>
               </li>
             </ul>
             <form class="d-flex" role="search">

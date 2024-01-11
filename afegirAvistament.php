@@ -19,9 +19,6 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="visualitzarAvistaments.php">Visualitzar avistaments</a>
               </li>     
-              <li class="nav-item">
-                <a class="nav-link" href="visualitzarOcells.php">Visualitar especies d'ocells</a>
-              </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
