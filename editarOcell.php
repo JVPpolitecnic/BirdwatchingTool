@@ -51,8 +51,9 @@ $birds = selectBirdsById($id);
       Editar ocell
     </div>
       <div class="card-body">
-        <form action="controllers_php/birdController.php" method="POST" enctype="multipart/form-data">
+        <form action="controllers_php/updateBirdController.php" method="GET">
             <div class="form-group">
+            <input type="hidden" class="form-control" name="id" aria-describedby="name" value=<?php echo '"'. $id . '"' ?>>
               <label for="nom">Nom llatí</label>
               <input type="text" class="form-control" name="nom" aria-describedby="name" value=<?php echo '"'. $birds[0]['nom_llati'] . '"' ?>>
             </div>
@@ -80,7 +81,8 @@ $birds = selectBirdsById($id);
                   <input type="file" class="form-control-file" id="img" name="birdImg">
                 </div>
             
-            <a class="btn btn-outline-success mt-4" href="" name="submit">Edita</a>
+                <button class="btn btn-outline-success mt-4" href="" name="submit" type="submit">Edita</button>
+
           </form>
     </div>
                 </div>

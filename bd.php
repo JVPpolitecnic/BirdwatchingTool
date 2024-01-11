@@ -124,7 +124,21 @@ $sentencia->bindParam(':zona', $zona);
     $conexion = closeBD();
     return $resultado;
   }
+function updateBirdById($idBirdToUpdate, $nomLLati, $nomComu, $idOrdre){
+  $conexion = openBD();
+  $sentenciaTxt = "UPDATE ocells SET nom_llati = :nomLLati , nom_comu = :nomComu , id_ordre_cientific = :ordre
+  WHERE id_ocell = :id";
+  $sentencia = $conexion->prepare($sentenciaTxt);
+  $sentencia->bindParam(':id', $idBirdToUpdate);
+  $sentencia->bindParam(':nomLLati', $nomLLati);
+  $sentencia->bindParam(':nomComu', $nomComu);
+  $sentencia->bindParam(':ordre', $idOrdre);
+  $sentencia -> execute();
+  $conexion = closeBD();
 
+
+  
+}
   function getPasswordByEmails($email){
     $conexion = openBD();
     $sentenciaTxt = "select contrasenya from birdwatchingtool.birdwatcher where correu_electronic = :email";
