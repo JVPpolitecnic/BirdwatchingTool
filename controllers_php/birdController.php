@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once('../bd.php');
     if(isset($_POST['submit'])) {
       
@@ -30,9 +31,14 @@
           } else {
               echo "File upload failed with error code: " . $fileError;
           }
-
-          insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOr'], $destinationPathDB); 
-        exit();
+if(isset($_SESSION['error'])){
+    header('Location: ./editarOcell.php'); 
+}else{
+    insertBird($_POST['nom'], $_POST['nomComu'], $_POST['idOr'], $destinationPathDB); 
+    exit();
+    header('Location: ./editarOcell.php'); 
+}
+          
 
       }
       

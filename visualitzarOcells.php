@@ -44,8 +44,9 @@
       foreach($birds as $row){
      echo 
      "<div class='col-md-4'>".
-        "<div class='card special my-4' style='width: 18rem;'>".
-        
+        "<div class='card special my-4' style='width: 18rem;'>"  ?>
+        <?php require_once('./partials_php/messages.php')?>
+        <?php 
         "<div class='card-body'>".
         "<img src='". $row['img_ocell'] ."' class='card-img-top special-img' alt='".$row['nom_comu']."'>".
           "<h2 class='special-h2'>". $row['nom_comu'] ."</h2>
@@ -55,7 +56,7 @@
         "</div>".
         "</div>".
       "</div>";
-    }
-        ?>
+    } ?>
+       
         </div>
         </div>

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 function openBD()
 {
 $servername = "localhost";
@@ -135,9 +136,7 @@ $_SESSION['error'] = $e->getCode() . '-' . $e->getMessage();
     $sentenciaTxt = "delete from birdwatchingtool.ocells where id_ocell =". $id; 
     $sentencia = $conexion->prepare($sentenciaTxt);
     $sentencia -> execute();
-    $resultado = $sentencia->fetchAll();
     $conexion = closeBD();
-    return $resultado;
   } catch (PDOException $e) {
     $_SESSION['error'] = $e->getCode() . '-' . $e->getMessage();
     }

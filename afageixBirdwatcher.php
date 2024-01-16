@@ -38,20 +38,7 @@
     <div class="card-header text-bg-success">
       Afegeix nou usuari
     </div>
-    <?php
-    if(isset($_SESSION['error'])){?>
-    <div class="alert alert-danger alert-dismissable fade show mt-3" role="alert">
-      <?php
-      echo $_SESSION['error'];
-      unset($_SESSION['error']);
-      ?>
-      <button>
-        <span aria-hidden="true"> &times; </span>
-      </button>
-    </div>
-      
-    <php>  } </php>
-    
+    <?php require_once('partials_php/messages.php') ?>
     <div class="card-body">
         <form action="controllers_php/birdwatcherController.php" method="POST">
             <div class="form-group">
