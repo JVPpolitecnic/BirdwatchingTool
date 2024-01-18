@@ -12,6 +12,8 @@ if (isset($_POST['insert'])) {
     exit();
     }
     
-}
+    }
+    
+
 
 ?>

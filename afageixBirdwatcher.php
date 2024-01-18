@@ -38,6 +38,7 @@
     <div class="card-header text-bg-success">
       Afegeix nou usuari
     </div>
+    <?php require_once('partials_php/messages.php') ?>
     <div class="card-body">
         <form action="controllers_php/birdwatcherController.php" method="POST">
             <div class="form-group">
